@@ -1,0 +1,18 @@
+.button_container {
+        display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: calc(40rem/16);
+    height: calc(40rem/16);
+    background-color: var(--color_3);
+    border-radius: 10px;
+    padding: calc(16rem/16);
+    border: 0px;
+    border-bottom: 8px solid var(--color_11);
+}
+
+.button_container:hover {
+    background-color: var(--color_4);
+}
+
