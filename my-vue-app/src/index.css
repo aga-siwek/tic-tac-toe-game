@@ -1,5 +1,6 @@
 :root {
   --color_1: hsl(202, 32%, 15%);
+  --color_1_transparent: hsla(202, 32%, 15%, 0.4);
   --color_2: hsl(199, 35%, 19%);
   --color_3: hsl(198, 23%, 72%);
   --color_4: hsl(197, 33%, 89%);
