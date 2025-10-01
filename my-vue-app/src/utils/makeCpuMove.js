@@ -78,7 +78,6 @@ export function makeCpuMove(board, cpuPlayer) {
 
 
     while (true) {
-        console.log("board from makecpumove", board)
 
         if (!board.flat().includes(null)) {
             return null
