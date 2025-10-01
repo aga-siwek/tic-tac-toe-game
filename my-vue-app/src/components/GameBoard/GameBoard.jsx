@@ -6,13 +6,14 @@ import GameScore from "./GameScore.jsx";
 function GameBoard({
                        firstPlayer,
                        cpuPlayerActive,
-                       gameplayResult,
-                       changeGameResult,
                        isXTurn,
                        restartBoard,
-                       gameResult
+                       gameResult,
+                       board,
+                       makeMove
+
                    }) {
-    console.log("gameplayResult from GameBoard", gameplayResult);
+    console.log("board from GameBoard", board);
     return (
         <div className={styles.game_container}>
             <GameHeader isXTurn={isXTurn} restartBoard={restartBoard}/>
@@ -20,16 +21,15 @@ function GameBoard({
                 <MainBoard
                     firstPlayer = {firstPlayer}
                     cpuPlayerActive = {cpuPlayerActive}
-                    gameplayResult = {gameplayResult}
-                    changeGameResult = {changeGameResult}
                     isXTurn = {isXTurn}
+                    board={board}
+                    makeMove = {makeMove}
                 />
                 <GameScore
                     gameResult={gameResult}
                     firstPlayer={firstPlayer}
                     cpuPlayerActive={cpuPlayerActive}/>
             </div>
-
         </div>)
 }
 

@@ -6,13 +6,21 @@ import iconO_outline from "../../assets/icon-o-outline.svg"
 
 import {ReactSVG} from "react-svg";
 
-function MainBoardFile({cell, player = null, isXTurn, changeGameResult}) {
-    const clickOnCell = () => {
+function MainBoardFile({
+                           cell = null,
+                           player = null,
+                           isXTurn,
+                           rowIndex,
+                           columnIndex,
+                           makeMove,
+                       }) {
+
+    console.log ("main board file indekses", rowIndex, columnIndex)
+    const clickCell = () => {
         if (isXTurn) {
-            changeGameResult(cell, "x")
-        }
-        else {
-            changeGameResult(cell, "o")
+            makeMove(rowIndex, columnIndex, "x")
+        } else {
+            makeMove(rowIndex, columnIndex, "o")
         }
     }
     const showCell = () => {
@@ -20,10 +28,10 @@ function MainBoardFile({cell, player = null, isXTurn, changeGameResult}) {
             return (
                 <div className={styles.main_board_file_conteiner}>
                     {isXTurn ? (
-                        <div className={styles.icon_x_hover_svg} onClick={clickOnCell}>
+                        <div className={styles.icon_x_hover_svg} onClick={clickCell}>
                             <ReactSVG src={iconX_outline} className={styles.icon_x_outline_svg}/>
                         </div>) : (
-                        <div className={styles.icon_hover_o_svg} onClick={clickOnCell}>
+                        <div className={styles.icon_hover_o_svg} onClick={clickCell}>
                             <ReactSVG src={iconO_outline} className={styles.icon_o_outline_svg}/>
                         </div>)}
 

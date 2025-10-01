@@ -7,7 +7,7 @@ import oIcon from "../../assets/icon-o.svg"
 import Button from "../common/Button/ButtonSecondary.jsx"
 
 
-function Score({firstPlayer, gameplayResult, restartBoard, restartGame}) {
+function Score({firstPlayer, gameplayResult, restartBoard, restartGame, cpuPlayerActive}) {
     const whoWon = checkWin(gameplayResult)
     const isTied = isFullBoard(gameplayResult)
 
