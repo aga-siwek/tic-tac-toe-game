@@ -6,7 +6,6 @@ import xIcon from "../../assets/icon-x.svg"
 import oIcon from "../../assets/icon-o.svg"
 import Button from "../common/Button/ButtonSecondary.jsx"
 
-
 function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive}) {
     const whoWon = checkWhoWin(board)
     const isTied = checkIsFullBoard(board)
@@ -17,15 +16,16 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
                         {(isTied && whoWon === null) ? (
                             <div className={styles.who_won}>
                                 <p className={styles.body_text}></p>
+
                                 <div className={styles.score_content}>
                                     <div className={styles.take_round}>
-                                        <p className={styles.take_round_x_text}>RESTART GAME?</p>
+                                        <p className={styles.take_round_ties_text}>RESTART GAME?</p>
                                     </div>
                                     <div className={styles.restart_buttons}>
-                                        <div className={styles.restart_button_one}>
+                                        <div className={styles.restart_button_one_cpu}>
                                             <Button text="NO, CANCEL" color="silver" clickFunction={restartGame}/>
                                         </div>
-                                        <div className={styles.restart_button_two}>
+                                        <div className={styles.restart_button_two_cpu}>
                                             <Button text="YES, RESTART" color="yellow" clickFunction={restartBoard}/>
                                         </div>
                                     </div>
@@ -49,10 +49,10 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
                                         </div>
                                     )}
                                     <div className={styles.restart_buttons}>
-                                        <div className={styles.restart_button_one}>
+                                        <div className={styles.restart_button_one_cpu}>
                                             <Button text="QUIT" color="silver" clickFunction={restartGame}/>
                                         </div>
-                                        <div className={styles.restart_button_two}>
+                                        <div className={styles.restart_button_two_cpu}>
                                             <Button text="NEW ROUND" color="yellow" clickFunction={restartBoard}/>
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
                                 <p className={styles.body_text}></p>
                                 <div className={styles.score_content}>
                                     <div className={styles.take_round}>
-                                        <p className={styles.take_round_x_text}>ROUND TIED</p>
+                                        <p className={styles.take_round_ties_text}>ROUND TIED</p>
                                     </div>
                                     <div className={styles.restart_buttons}>
                                         <div className={styles.restart_button_one}>

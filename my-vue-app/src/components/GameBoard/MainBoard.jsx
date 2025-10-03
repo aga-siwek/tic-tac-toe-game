@@ -25,7 +25,7 @@ function MainBoard({
         return board.map((row, rowIndex) =>
             row.map((column, columnIndex) => (
                 <MainBoardFile
-                    key={`${rowIndex}-${columnIndex}`}
+                    key={`${rowIndex}.${columnIndex}`}
                     player={column}
                     isXTurn={isXTurn}
                     changeGameResult={changeGameResult}

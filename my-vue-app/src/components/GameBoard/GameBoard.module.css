@@ -5,7 +5,7 @@
     justify-content: center;
     gap: calc(64rem / 16);
     width: 100%;
-
+    max-width: calc(460rem / 16);
 }
 
 .game_content {
@@ -16,4 +16,13 @@
     gap: calc(20rem / 16);
     width: 100%;
 }
+
+@media (min-width: 768px) {
+    .game_container {
+        width: calc(460rem / 16);
+        gap: calc(20rem / 16);
+    }
+}
+
+@media (min-width: 1440px) {}
 

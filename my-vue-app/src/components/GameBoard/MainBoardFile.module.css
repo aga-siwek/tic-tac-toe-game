@@ -46,3 +46,26 @@ opacity: 1;
 .hidden {
     display: none;
 }
+
+@media (min-width: 768px) {
+    .main_board_file_conteiner {
+        padding: calc(38rem/16);
+    }
+    .icon_x_outline_svg {
+        width: calc(63rem/16);
+        height: calc(63rem/16); }
+
+    .icon_x_svg  {
+        width: calc(63rem/16);
+        height: calc(63rem/16); }
+
+    .icon_o_outline_svg {
+        width: calc(63rem/16);
+        height: calc(63rem/16);}
+
+    .icon_o_svg  {
+        width: calc(63rem/16);
+        height: calc(63rem/16); }
+}
+
+@media (min-width: 1440px) {}

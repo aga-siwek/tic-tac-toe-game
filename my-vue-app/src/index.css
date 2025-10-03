@@ -13,7 +13,14 @@
   --color_11: hsl(202, 11%, 56%);
   --color_12: hsl(203, 32%, 11%);
 }
-
+html {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto auto;
+  height: 100%;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -24,7 +31,8 @@ body {
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
   font-weight: bold;
-  font-style: normal;;
+  font-style: normal;
+  position: relative;
 }
 
 root {

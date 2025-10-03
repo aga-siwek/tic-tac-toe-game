@@ -7,7 +7,8 @@ function GameScore({gameResult, firstPlayer, cpuPlayerActive}) {
             return (
                 <div className={styles.conteiner_scores}>
                     <div className={`${styles.x_player} ${styles.score_box}`}>
-                        <p className={styles.header}>X (P1)</p>
+                        {cpuPlayerActive ? <p className={styles.header}>X (YOU)</p> :
+                            <p className={styles.header}>X (P1)</p>}
                         <p className={styles.score}>{gameResult["x"]}</p>
                     </div>
                     <div className={`${styles.ties} ${styles.score_box}`}>
@@ -43,7 +44,8 @@ function GameScore({gameResult, firstPlayer, cpuPlayerActive}) {
                         <p className={styles.score}>{gameResult["Ties"]}</p>
                     </div>
                     <div className={`${styles.o_player} ${styles.score_box}`}>
-                        <p className={styles.header}>O (P1)</p>
+                        {cpuPlayerActive ? <p className={styles.header}>O (YOU)</p>:
+                            <p className={styles.header}>O (P1)</p>}
                         <p className={styles.score}>{gameResult["o"]}</p>
                     </div>
                 </div>)

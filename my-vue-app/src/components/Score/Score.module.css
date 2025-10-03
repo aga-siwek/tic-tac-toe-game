@@ -5,7 +5,7 @@
     width: 100vw;
     height: 100vh;
     background-color: var(--color_1_transparent);
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
 }
@@ -19,8 +19,16 @@
     background-color: var(--color_2);
     width: 100%;
     height: calc(228rem/16);
+    padding: calc(40rem/16);
 }
-.who_won {}
+.who_won {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(16rem/16);
+    width: 100%
+}
 .body_text {
     font-size: calc(14rem/16);
     font-weight: bold;
@@ -33,6 +41,7 @@
     align-items: center;
     justify-content: center;
     gap: calc(24rem/16);
+    width: 100%;
 }
 
 
@@ -69,11 +78,28 @@
     letter-spacing: 1.5px;
 }
 
+.take_round_ties_text {
+    color: var(--color_3);
+    font-size: calc(24rem/16);
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
 .restart_buttons {
     display: flex;
     flex-direction: row;
     gap: calc(16rem/16);
-    width: 100%
+    width: 100%;
+    padding: 0 calc(21rem/16);
+    justify-content: center;
+    align-items: center;
+}
+
+.restart_button_one_cpu {
+    width: 40%;
+}
+.restart_button_two_cpu {
+    width: 60%;
 }
 
 .restart_button_one {
@@ -82,3 +108,49 @@
 .restart_button_two {
     width: 60%;
 }
+
+@media (min-width: 768px) {
+    .body_text {
+        font-size: calc(16rem/16);
+        letter-spacing: 1px;
+    }
+
+    .take_round_x_icon {
+        width: calc(64rem/16);
+        height: calc(64rem/16);
+    }
+
+    .take_round_o_icon {
+        width: calc(64rem/16);
+        height: calc(64rem/16);
+    }
+
+    .take_round_x_text {
+        font-size: calc(40rem/16);
+        letter-spacing: 2.5px;
+    }
+
+    .take_round_o_text {
+        font-size: calc(40rem/16);
+        letter-spacing: 2.5px;
+    }
+
+    .take_round_ties_text {
+        font-size: calc(40rem/16);
+        letter-spacing: 2.5px;
+    }
+
+    .restart_button_one {
+        width: calc(76rem/16);
+    }
+    .restart_button_two {
+        width: calc(146rem/16);
+    }
+    .restart_button_one_cpu {
+        width: calc(139rem/16);
+    }
+    .restart_button_two_cpu {
+        width: calc(139rem/16);
+    }
+}
+@media (min-width: 1440px) {}

@@ -7,7 +7,6 @@ import iconO_outline from "../../assets/icon-o-outline.svg"
 import {ReactSVG} from "react-svg";
 
 function MainBoardFile({
-                           cell = null,
                            player = null,
                            isXTurn,
                            rowIndex,
