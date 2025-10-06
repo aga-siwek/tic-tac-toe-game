@@ -90,7 +90,7 @@
     flex-direction: row;
     gap: calc(16rem/16);
     width: 100%;
-    padding: 0 calc(21rem/16);
+    padding: 0 calc(15rem/16);
     justify-content: center;
     align-items: center;
 }
@@ -100,6 +100,13 @@
 }
 .restart_button_two_cpu {
     width: 60%;
+}
+
+.restart_button_one_cpu_ties {
+    width: 45%
+}
+.restart_button_two_cpu_ties {
+    width: 55%
 }
 
 .restart_button_one {

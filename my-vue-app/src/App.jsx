@@ -25,7 +25,7 @@ function App() {
         "o": 0,
         "Ties": 0
     })
-    const [gameOver, setGameOver] = useState(false);
+        const [GameOver, setGameOver] = useState(false);
     const [start, setStart] = useState(false);
     const restartBoard = () => {
         setBoard([
@@ -56,6 +56,7 @@ function App() {
     }
 
     const makeMove = (rowIndex, columnIndex, player) => {
+        console.log("start make move")
         setBoard(prev => {
             const newBoard = prev.map(row => [...row]);
             newBoard[rowIndex][columnIndex] = player;
@@ -65,11 +66,14 @@ function App() {
     }
 
     useEffect(() => {
+        console.log("start use effect point")
         const winResult = checkWhoWin(board);
         const isFull = checkIsFullBoard(board)
 
-        if (winResult != null) {
+        if (winResult != null && !GameOver) {
             setGameOver(true);
+            console.log("start add in result", gameResult)
+
             setGameResult((prevGameResult) => ({...prevGameResult, [`${winResult}`]: prevGameResult[winResult] + 1}));
             return;
         }
@@ -82,10 +86,12 @@ function App() {
     }, [board])
 
     useEffect(() => {
+        console.log("start useEffect make cpu move")
         if (cpuPlayerActive) {
             const cpuPlayer = firstPlayer === "o" ? "x" : "o";
             const isCpuMove = (firstPlayer === "o" && isXTurn) || (firstPlayer === "x" && !isXTurn)
             if (isCpuMove) {
+                console.log("start cpu move")
                 const move = makeCpuMove(board, cpuPlayer)
                 if (move === null) {
                     return
@@ -95,7 +101,7 @@ function App() {
                 setIsXTurn(!isXTurn)
             }
         }
-    }, [isXTurn, cpuPlayerActive]);
+    }, [isXTurn, cpuPlayerActive, GameOver]);
 
     return (
         <>
@@ -106,7 +112,7 @@ function App() {
                             firstPlayer={firstPlayer}
                             playWithCpu={playWithCpu}/>) :
 
-                    gameOver ? (
+                    GameOver ? (
                         <div>
                             <GameBoard
                                 firstPlayer={firstPlayer}

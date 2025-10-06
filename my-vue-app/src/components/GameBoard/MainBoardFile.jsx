@@ -14,7 +14,6 @@ function MainBoardFile({
                            makeMove,
                        }) {
 
-    console.log ("main board file indekses", rowIndex, columnIndex)
     const clickCell = () => {
         if (isXTurn) {
             makeMove(rowIndex, columnIndex, "x")
