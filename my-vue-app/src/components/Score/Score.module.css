@@ -95,6 +95,16 @@
     align-items: center;
 }
 
+.restart_buttons_cpu_ties {
+    display: flex;
+    flex-direction: row;
+    gap: calc(16rem/16);
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
 .restart_button_one_cpu {
     width: 40%;
 }
@@ -158,6 +168,13 @@
     }
     .restart_button_two_cpu {
         width: calc(139rem/16);
+    }
+    .restart_button_one_cpu_ties {
+        width: calc(139rem/16);
+
+    }
+    .restart_button_two_cpu_ties {
+        width: calc(151rem/16);
     }
 }
 @media (min-width: 1440px) {}

@@ -6,6 +6,7 @@ import Score from "./components/Score/Score.jsx";
 import {checkWhoWin} from "./utils/checkWhoWin.js";
 import {checkIsFullBoard} from "./utils/checkIsFullBoard.js";
 import {makeCpuMove} from "./utils/makeCpuMove.js";
+import {minMaxCpuMove} from "./utils/minMaxCpuMove.js";
 
 function App() {
     const playerX = "x"
@@ -92,7 +93,8 @@ function App() {
             const isCpuMove = (firstPlayer === "o" && isXTurn) || (firstPlayer === "x" && !isXTurn)
             if (isCpuMove) {
                 console.log("start cpu move")
-                const move = makeCpuMove(board, cpuPlayer)
+                // const move = makeCpuMove(board, cpuPlayer)
+                const move = minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn)
                 if (move === null) {
                     return
                 }

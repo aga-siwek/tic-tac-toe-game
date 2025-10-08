@@ -21,7 +21,7 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
                                     <div className={styles.take_round}>
                                         <p className={styles.take_round_ties_text}>RESTART GAME?</p>
                                     </div>
-                                    <div className={styles.restart_buttons}>
+                                    <div className={styles.restart_buttons_cpu_ties}>
                                         <div className={styles.restart_button_one_cpu_ties}>
                                             <Button text="NO, CANCEL" color="silver" clickFunction={restartGame}/>
                                         </div>
