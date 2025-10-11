@@ -99,26 +99,6 @@ function App() {
         }
     }, [board, gameOver, isXTurn, cpuPlayerActive])
 
-    // useEffect(() => {
-    //     if (cpuPlayerActive) {
-    //         const cpuPlayer = firstPlayer === "o" ? "x" : "o";
-    //         const isCpuMove = (firstPlayer === "o" && isXTurn) || (firstPlayer === "x" && !isXTurn)
-    //         if (!gameOver) {
-    //             console.log("game over from ue", gameOver);
-    //             if (isCpuMove) {
-    //                 // const move = makeCpuMove(board, cpuPlayer)
-    //                 const move = minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn)
-    //                 if (move === null) {
-    //                     return
-    //                 }
-    //                 const [rowIndex, colIndex] = move
-    //                 makeMove(rowIndex, colIndex, cpuPlayer)
-    //                 setIsXTurn(!isXTurn)
-    //             }
-    //         }
-    //     }
-    // }, [isXTurn, cpuPlayerActive, gameOver]);
-
     return (
         <>
             <div className="container">

@@ -60,11 +60,8 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>)}
-
                         </div>) :
-
                     (
                         <div className={styles.conteiner_score}>
                             {(isTied && whoWon === null) ? (
@@ -87,7 +84,8 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
                             ) : (
                                 <div className={styles.who_won}>
                                     {
-                                        (whoWon === firstPlayer) ? (<p className={styles.body_text}>PLAYER 1 WINS!</p>) :
+                                        (whoWon === firstPlayer) ? (
+                                                <p className={styles.body_text}>PLAYER 1 WINS!</p>) :
                                             (<p className={styles.body_text}>PLAYER 2 WINS!</p>)}
 
                                     <div className={styles.score_content}>
@@ -112,7 +110,6 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
                                     </div>
 
                                 </div>)}
-
                         </div>)}
             </div>)
     }
@@ -123,7 +120,7 @@ function Score({firstPlayer, board, restartBoard, restartGame, cpuPlayerActive})
             setVisiable(true);
         }, 500);
     }, [visiable])
-    return <>{visiable?showContent():null}</>
+    return <>{visiable ? showContent() : null}</>
 }
 
 

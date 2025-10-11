@@ -10,12 +10,20 @@ function PickPlayer({choosePlayer, firstPlayer, playWithCpu}) {
             <div className={styles.pick_player_header}>
                 <Logo/>
             </div>
-
-            <PickSelect choosePlayer={choosePlayer} firstPlayer={firstPlayer} />
+            <PickSelect
+                choosePlayer={choosePlayer}
+                firstPlayer={firstPlayer}/>
 
             <div className={styles.pick_player_buttons}>
-                <ButtonPrimary text="NEW GAME (VS CPU)" color="yellow" clickFunction = {playWithCpu} arg={true} />
-                <ButtonPrimary text="NEW GAME  (VS PLAYER)" color="blue" clickFunction = {playWithCpu} arg={false}/>
+                <ButtonPrimary text="NEW GAME (VS CPU)"
+                               color="yellow"
+                               clickFunction={playWithCpu}
+                               arg={true}/>
+                <ButtonPrimary
+                    text="NEW GAME  (VS PLAYER)"
+                    color="blue"
+                    clickFunction={playWithCpu}
+                    arg={false}/>
             </div>
         </div>)
 }

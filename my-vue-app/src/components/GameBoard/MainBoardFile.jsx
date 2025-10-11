@@ -26,11 +26,16 @@ function MainBoardFile({
             return (
                 <div className={styles.main_board_file_conteiner}>
                     {isXTurn ? (
-                        <div className={styles.icon_x_hover_svg} onClick={clickCell}>
-                            <ReactSVG src={iconX_outline} className={styles.icon_x_outline_svg}/>
+                        <div className={styles.icon_x_hover_svg}
+                             onClick={clickCell}>
+                            <ReactSVG
+                                src={iconX_outline}
+                                className={styles.icon_x_outline_svg}/>
                         </div>) : (
-                        <div className={styles.icon_hover_o_svg} onClick={clickCell}>
-                            <ReactSVG src={iconO_outline} className={styles.icon_o_outline_svg}/>
+                        <div className={styles.icon_hover_o_svg}
+                             onClick={clickCell}>
+                            <ReactSVG src={iconO_outline}
+                                      className={styles.icon_o_outline_svg}/>
                         </div>)}
 
                 </div>

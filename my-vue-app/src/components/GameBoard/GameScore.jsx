@@ -44,14 +44,14 @@ function GameScore({gameResult, firstPlayer, cpuPlayerActive}) {
                         <p className={styles.score}>{gameResult["Ties"]}</p>
                     </div>
                     <div className={`${styles.o_player} ${styles.score_box}`}>
-                        {cpuPlayerActive ? <p className={styles.header}>O (YOU)</p>:
+                        {cpuPlayerActive ? <p className={styles.header}>O (YOU)</p> :
                             <p className={styles.header}>O (P1)</p>}
                         <p className={styles.score}>{gameResult["o"]}</p>
                     </div>
                 </div>)
         }
     }
-return showScore()
+    return showScore()
 }
 
 export default GameScore

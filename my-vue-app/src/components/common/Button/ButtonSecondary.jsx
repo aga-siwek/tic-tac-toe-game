@@ -7,8 +7,9 @@ function ButtonSecondary({text = "CLICK ME", color = "silver", clickFunction}) {
     return (
         <button
             className={`${styles.button_container} ${colorPicker()}`}
-            onClick={()=>clickFunction()}>
+            onClick={() => clickFunction()}>
             {text}
         </button>)
 }
+
 export default ButtonSecondary

@@ -34,8 +34,7 @@ export function minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn) {
         if (winResult === null) {
             if (isFull) {
                 return [minMaxScores["Tie"], depth]
-            }
-            else if (isMaximizing) {
+            } else if (isMaximizing) {
                 debugger
                 let bestScore = -Infinity
                 for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
@@ -105,13 +104,11 @@ export function minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn) {
             if (cpuBoard[rowIndex][colIndex] === null) {
                 cpuBoard[rowIndex][colIndex] = firstPlayer
                 const whoWin = checkWhoWin(cpuBoard)
-                if (whoWin === firstPlayer && finalDepth!==0) {
+                if (whoWin === firstPlayer && finalDepth !== 0) {
                     bestMove = [rowIndex, colIndex]
                 }
                 cpuBoard[rowIndex][colIndex] = null
-
             }
-
         }
     }
     return bestMove;

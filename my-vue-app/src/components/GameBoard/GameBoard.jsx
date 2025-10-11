@@ -18,11 +18,11 @@ function GameBoard({
             <GameHeader isXTurn={isXTurn} restartBoard={restartBoard}/>
             <div className={styles.game_content}>
                 <MainBoard
-                    firstPlayer = {firstPlayer}
-                    cpuPlayerActive = {cpuPlayerActive}
-                    isXTurn = {isXTurn}
+                    firstPlayer={firstPlayer}
+                    cpuPlayerActive={cpuPlayerActive}
+                    isXTurn={isXTurn}
                     board={board}
-                    makeMove = {makeMove}
+                    makeMove={makeMove}
                 />
                 <GameScore
                     gameResult={gameResult}
