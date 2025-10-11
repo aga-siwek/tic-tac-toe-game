@@ -20,7 +20,6 @@ function MainBoard({
             />
         ));
     }
-    console.log("main board, game board", board);
     const showGameCells = () => {
         return board.map((row, rowIndex) =>
             row.map((column, columnIndex) => (

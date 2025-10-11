@@ -7,6 +7,9 @@ export function minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn) {
     let cpuBoard = structuredClone(board)
     let bestScore = -Infinity;
     let bestMove;
+    let depth;
+    let score;
+    let finalDepth = 0
 
     if (cpuPlayer === "x") {
         minMaxScores = {
@@ -14,8 +17,7 @@ export function minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn) {
             "o": -1,
             "Tie": 0
         };
-    }
-    else {
+    } else {
         minMaxScores = {
             "x": -1,
             "o": 1,
@@ -24,7 +26,6 @@ export function minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn) {
     }
 
     const minMax = (someBoard, depth, isMaximizing) => {
-        debugger
         let minMaxBoard = structuredClone(someBoard)
         let winResult = checkWhoWin(minMaxBoard)
         let isFull = checkIsFullBoard(minMaxBoard)
@@ -32,50 +33,50 @@ export function minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn) {
 
         if (winResult === null) {
             if (isFull) {
-                console.log("minmax is full")
-                return minMaxScores["Tie"]
+                return [minMaxScores["Tie"], depth]
             }
-            if (isMaximizing) {
-                console.log("minmax is maximizing")
+            else if (isMaximizing) {
                 debugger
                 let bestScore = -Infinity
                 for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
                     for (let colIndex = 0; colIndex < 3; colIndex++) {
                         if (minMaxBoard[rowIndex][colIndex] === null) {
                             minMaxBoard[rowIndex][colIndex] = cpuPlayer
-                            let score = minMax(minMaxBoard, depth + 1, false)
+                            ;[score, depth] = minMax(minMaxBoard, depth + 1, false)
                             minMaxBoard[rowIndex][colIndex] = null
                             bestScore = Math.max(score, bestScore)
                         }
                     }
                 }
-                return bestScore
+                return [bestScore, depth]
             } else {
-                debugger
                 let bestScore = Infinity
                 for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
                     for (let colIndex = 0; colIndex < 3; colIndex++) {
                         if (minMaxBoard[rowIndex][colIndex] === null) {
                             minMaxBoard[rowIndex][colIndex] = firstPlayer
-                            let score = minMax(minMaxBoard, depth + 1, true)
+                            ;[score, depth] = minMax(minMaxBoard, depth + 1, true)
                             minMaxBoard[rowIndex][colIndex] = null
                             bestScore = Math.min(score, bestScore)
                         }
                     }
                 }
-                return bestScore
+                return [bestScore, depth]
             }
 
         } else {
-            console.log("minMaxScores[winResult]", minMaxScores[winResult])
-            return minMaxScores[winResult]
+            return [minMaxScores[winResult], depth]
         }
     }
 
-    if (board.flat().every(cell => cell === null)) {
-        const randomRowIndex  = Math.floor(Math.random() * 3);
-        const randomColIndex  = Math.floor(Math.random() * 3);
-        return [randomRowIndex, randomColIndex]
+    if (board.flat().every(cell => cell !== cpuPlayer)) {
+        while (true) {
+            const randomRowIndex = Math.floor(Math.random() * 3);
+            const randomColIndex = Math.floor(Math.random() * 3);
+            if (board[randomRowIndex][randomColIndex] === null) {
+                return [randomRowIndex, randomColIndex]
+            }
+        }
     }
 
     if (!board.flat().includes(null)) {
@@ -83,24 +84,35 @@ export function minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn) {
     }
 
     for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
-        debugger
         for (let colIndex = 0; colIndex < 3; colIndex++) {
-            console.log("row index from minmax", rowIndex)
-            console.log("col index from minmax", colIndex)
+            debugger
+            depth = 0
             if (cpuBoard[rowIndex][colIndex] === null) {
                 cpuBoard[rowIndex][colIndex] = cpuPlayer
-                let score = minMax(cpuBoard, 0, false)
+                ;[score, depth] = minMax(cpuBoard, depth, false)
                 cpuBoard[rowIndex][colIndex] = null
+
                 if (score > bestScore) {
                     bestScore = score
                     bestMove = [rowIndex, colIndex]
+                    finalDepth = depth
                 }
             }
         }
-
     }
-    console.log(bestMove)
+    for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
+        for (let colIndex = 0; colIndex < 3; colIndex++) {
+            if (cpuBoard[rowIndex][colIndex] === null) {
+                cpuBoard[rowIndex][colIndex] = firstPlayer
+                const whoWin = checkWhoWin(cpuBoard)
+                if (whoWin === firstPlayer && finalDepth!==0) {
+                    bestMove = [rowIndex, colIndex]
+                }
+                cpuBoard[rowIndex][colIndex] = null
+
+            }
+
+        }
+    }
     return bestMove;
-
-
 }

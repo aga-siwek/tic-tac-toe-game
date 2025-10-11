@@ -13,7 +13,6 @@ function GameBoard({
                        makeMove
 
                    }) {
-    console.log("board from GameBoard", board);
     return (
         <div className={styles.game_container}>
             <GameHeader isXTurn={isXTurn} restartBoard={restartBoard}/>

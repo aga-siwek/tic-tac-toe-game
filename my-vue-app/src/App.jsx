@@ -26,7 +26,7 @@ function App() {
         "o": 0,
         "Ties": 0
     })
-        const [GameOver, setGameOver] = useState(false);
+    const [gameOver, setGameOver] = useState(false);
     const [start, setStart] = useState(false);
     const restartBoard = () => {
         setBoard([
@@ -57,7 +57,6 @@ function App() {
     }
 
     const makeMove = (rowIndex, columnIndex, player) => {
-        console.log("start make move")
         setBoard(prev => {
             const newBoard = prev.map(row => [...row]);
             newBoard[rowIndex][columnIndex] = player;
@@ -67,43 +66,58 @@ function App() {
     }
 
     useEffect(() => {
-        console.log("start use effect point")
         const winResult = checkWhoWin(board);
         const isFull = checkIsFullBoard(board)
 
-        if (winResult != null && !GameOver) {
+        if (winResult != null && !gameOver) {
             setGameOver(true);
-            console.log("start add in result", gameResult)
 
             setGameResult((prevGameResult) => ({...prevGameResult, [`${winResult}`]: prevGameResult[winResult] + 1}));
             return;
         }
 
-        if (isFull) {
+        if (isFull && !gameOver) {
             setGameOver(true);
             setGameResult((prevGameResult) => ({...prevGameResult, ["Ties"]: prevGameResult["Ties"] + 1}));
             return;
         }
-    }, [board])
-
-    useEffect(() => {
-        console.log("start useEffect make cpu move")
         if (cpuPlayerActive) {
             const cpuPlayer = firstPlayer === "o" ? "x" : "o";
             const isCpuMove = (firstPlayer === "o" && isXTurn) || (firstPlayer === "x" && !isXTurn)
-            if (isCpuMove) {
-                console.log("start cpu move")
-                // const move = makeCpuMove(board, cpuPlayer)
-                const move = minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn)
-                if (move === null) {
-                    return
+            if (!gameOver) {
+                if (isCpuMove) {
+                    // const move = makeCpuMove(board, cpuPlayer)
+                    const move = minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn)
+                    if (move === null) {
+                        return
+                    }
+                    const [rowIndex, colIndex] = move
+                    makeMove(rowIndex, colIndex, cpuPlayer)
+                    setIsXTurn(!isXTurn)
                 }
-                const [rowIndex, colIndex] = move
-                makeMove(rowIndex, colIndex, cpuPlayer)
-                setIsXTurn(!isXTurn)
             }
         }
-    }, [isXTurn, cpuPlayerActive, GameOver]);
+    }, [board, gameOver, isXTurn, cpuPlayerActive])
+
+    // useEffect(() => {
+    //     if (cpuPlayerActive) {
+    //         const cpuPlayer = firstPlayer === "o" ? "x" : "o";
+    //         const isCpuMove = (firstPlayer === "o" && isXTurn) || (firstPlayer === "x" && !isXTurn)
+    //         if (!gameOver) {
+    //             console.log("game over from ue", gameOver);
+    //             if (isCpuMove) {
+    //                 // const move = makeCpuMove(board, cpuPlayer)
+    //                 const move = minMaxCpuMove(board, cpuPlayer, firstPlayer, isXTurn)
+    //                 if (move === null) {
+    //                     return
+    //                 }
+    //                 const [rowIndex, colIndex] = move
+    //                 makeMove(rowIndex, colIndex, cpuPlayer)
+    //                 setIsXTurn(!isXTurn)
+    //             }
+    //         }
+    //     }
+    // }, [isXTurn, cpuPlayerActive, gameOver]);
 
     return (
         <>
@@ -114,7 +128,7 @@ function App() {
                             firstPlayer={firstPlayer}
                             playWithCpu={playWithCpu}/>) :
 
-                    GameOver ? (
+                    gameOver ? (
                         <div>
                             <GameBoard
                                 firstPlayer={firstPlayer}
